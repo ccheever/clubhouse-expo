@@ -14,7 +14,7 @@ import { NavigationBar } from "../components/NavigationBar";
 
 export function Home() {
   const roomOneUsers = [...users].slice(0, 18);
-  const roomTwoUsers = [...users].slice(18, 35);
+  const roomTwoUsers = [...users].slice(19, 35);
   const roomThreeUsers = [...users].slice(35, 100);
   return (
     <View style={styles.container}>

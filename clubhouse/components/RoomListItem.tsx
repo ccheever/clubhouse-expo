@@ -62,11 +62,15 @@ const styles = StyleSheet.create({
     height: 44,
     width: 44,
     borderRadius: 16,
+    resizeMode: "contain",
+    backgroundColor: colors.gray,
   },
   imageTwo: {
     position: "absolute",
     left: 30,
     top: 16,
+    resizeMode: "contain",
+    backgroundColor: colors.gray,
   },
   avatars: {
     width: 74,
