@@ -10,6 +10,7 @@ import { useDimensions } from "@react-native-community/hooks";
 import { AppLoading } from "expo";
 import { Loading } from "./screens/Loading";
 import { Rooms } from "./screens/Rooms";
+import { Activity } from "./screens/Activity";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -32,7 +33,8 @@ function SigninScreen() {
     setTimeout(() => setLoading(false), 1000);
   }
 
-  return <Rooms />;
+  // return <Rooms />;
+  return <Activity />;
 
   return (
     <Loading isLoading={loading}>
