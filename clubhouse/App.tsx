@@ -20,7 +20,7 @@ export default function App() {
     Nunito_700Bold,
     Nunito_400Regular,
   });
-  let imagesLoaded = useImages({...icons, ...images});
+  let imagesLoaded = useImages({ ...icons, ...images });
   if (!fontsLoaded || !imagesLoaded) {
     return <AppLoading />;
   }

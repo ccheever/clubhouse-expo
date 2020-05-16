@@ -1,35 +1,16 @@
 import React, { useState } from "react";
 import { Image, StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import { Loading } from "./Loading";
-import { Profile } from "./Profile";
 import { useDimensions } from "@react-native-community/hooks";
 import { images } from "../styleguide";
 
-export default function SigninScreen() {
-  let { height, width } = useDimensions().window;
+export function SignIn() {
   const [loading, setLoading] = useState(false);
 
   function fakeLoading() {
     setLoading(true);
     setTimeout(() => setLoading(false), 1000);
   }
-
-  // return <Activity />;
-  return (
-    <Profile
-      user={{
-        firstName: "Scarlett",
-        lastName: "Zemlak",
-        username: "Dereck_Klocko2",
-        avatar:
-          "https://s3.amazonaws.com/uifaces/faces/twitter/mhudobivnik/128.jpg",
-        followers: 109,
-        following: 169,
-        bio:
-          "Nostrum dolorum aut fugit recusandae sint. Dignissimos earum dolores omnis et ex voluptas. Omnis et odit ea harum repudiandae quasi reiciendis. Et saepe ipsa repellendus dolores consequatur quas.",
-      }}
-    />
-  );
 
   return (
     <Loading isLoading={loading}>
