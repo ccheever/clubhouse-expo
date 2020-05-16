@@ -32,7 +32,7 @@ function SigninScreen() {
     setTimeout(() => setLoading(false), 1000);
   }
 
-  // return <Rooms />;
+  return <Rooms />;
 
   return (
     <Loading isLoading={loading}>

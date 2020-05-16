@@ -11,6 +11,7 @@ function createUser() {
     avatar: faker.internet.avatar(),
     followers: Math.floor(Math.random() * 300),
     following: Math.floor(Math.random() * 300),
+    bio: faker.lorem.paragraph(),
   };
 
   return result;
