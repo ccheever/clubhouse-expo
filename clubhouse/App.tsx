@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { Image, StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
-import { useFonts, Nunito_600SemiBold } from "@expo-google-fonts/nunito";
+import {
+  useFonts,
+  Nunito_600SemiBold,
+  Nunito_700Bold,
+} from "@expo-google-fonts/nunito";
 import { useDimensions } from "@react-native-community/hooks";
 import { AppLoading } from "expo";
 import { Loading } from "./screens/Loading";
+import { Rooms } from "./screens/Rooms";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     Nunito_600SemiBold,
+    Nunito_700Bold,
   });
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -25,6 +31,8 @@ function SigninScreen() {
     setLoading(true);
     setTimeout(() => setLoading(false), 1000);
   }
+
+  // return <Rooms />;
 
   return (
     <Loading isLoading={loading}>
