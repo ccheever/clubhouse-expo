@@ -5,10 +5,12 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
 } from "react-native";
 import users from "../assets/users.json";
 import { RoomListItem } from "../components/RoomListItem";
-import { colors } from "../styleguide";
+import { colors, AddUserIcon, images } from "../styleguide";
+import { NavigationBar } from "../components/NavigationBar";
 
 export function Home() {
   const roomOneUsers = [...users].slice(0, 18);
@@ -16,6 +18,28 @@ export function Home() {
   const roomThreeUsers = [...users].slice(35, 100);
   return (
     <View style={styles.container}>
+      <NavigationBar
+        renderLeft={() => (
+          <View style={{ marginLeft: 8 }}>
+            <AddUserIcon />
+          </View>
+        )}
+        renderRight={() => (
+          <View style={styles.navigationRight}>
+            <Image
+              source={images.notificationsOn}
+              style={{ width: 27, height: 29 }}
+            />
+            <Image
+              source={{
+                uri:
+                  "https://s3.amazonaws.com/uifaces/faces/twitter/mhudobivnik/128.jpg",
+              }}
+              style={styles.navAvatar}
+            />
+          </View>
+        )}
+      />
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <RoomListItem users={roomOneUsers} />
         <RoomListItem users={roomTwoUsers} />
@@ -72,5 +96,17 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito_600SemiBold",
     fontSize: 16,
     marginTop: 8,
+  },
+  navigationRight: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  navAvatar: {
+    width: 33,
+    height: 33,
+    borderRadius: 13,
+    resizeMode: "contain",
+    marginLeft: 30,
+    marginRight: 12,
   },
 });
