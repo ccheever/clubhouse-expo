@@ -27,6 +27,7 @@ export function HomeStack() {
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Activity" component={Activity} />
       <Stack.Screen
         name="UserSettings"
         component={UserSettings}

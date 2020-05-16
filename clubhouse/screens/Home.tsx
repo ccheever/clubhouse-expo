@@ -12,7 +12,7 @@ import { RoomListItem } from "../components/RoomListItem";
 import { colors, AddUserIcon, images } from "../styleguide";
 import { NavigationBar } from "../components/NavigationBar";
 
-export function Home() {
+export function Home(props) {
   const roomOneUsers = [...users].slice(0, 18);
   const roomTwoUsers = [...users].slice(19, 35);
   const roomThreeUsers = [...users].slice(35, 100);
@@ -26,17 +26,25 @@ export function Home() {
         )}
         renderRight={() => (
           <View style={styles.navigationRight}>
-            <Image
-              source={images.notificationsOn}
-              style={{ width: 27, height: 29 }}
-            />
-            <Image
-              source={{
-                uri:
-                  "https://s3.amazonaws.com/uifaces/faces/twitter/mhudobivnik/128.jpg",
-              }}
-              style={styles.navAvatar}
-            />
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate("Activity")}
+            >
+              <Image
+                source={images.notificationsOn}
+                style={{ width: 27, height: 29 }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate("Profile")}
+            >
+              <Image
+                source={{
+                  uri:
+                    "https://s3.amazonaws.com/uifaces/faces/twitter/mhudobivnik/128.jpg",
+                }}
+                style={styles.navAvatar}
+              />
+            </TouchableOpacity>
           </View>
         )}
       />
