@@ -4,12 +4,15 @@ import { Loading } from "./Loading";
 import { useDimensions } from "@react-native-community/hooks";
 import { images } from "../styleguide";
 
-export function SignIn() {
+export function SignIn({ navigation }: { navigation: any }) {
   const [loading, setLoading] = useState(false);
 
-  function fakeLoading() {
+  function fakeLoading(onComplete: Function) {
     setLoading(true);
-    setTimeout(() => setLoading(false), 1000);
+    setTimeout(() => {
+      setLoading(false);
+      onComplete();
+    }, 1000);
   }
 
   return (
@@ -32,7 +35,10 @@ export function SignIn() {
           }}
         />
 
-        <TouchableOpacity onPress={() => fakeLoading()} style={{ zIndex: 100 }}>
+        <TouchableOpacity
+          onPress={() => fakeLoading(() => navigation.replace("Home"))}
+          style={{ zIndex: 100 }}
+        >
           <View
             style={{
               height: 60,

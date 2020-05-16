@@ -24,7 +24,11 @@ export function HomeStack() {
         contentStyle: { backgroundColor: colors.beige },
       }}
     >
-      <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Screen
+        name="SignIn"
+        component={SignIn}
+        options={{ stackAnimation: "fade" }}
+      />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Activity" component={Activity} />
