@@ -1,0 +1,12 @@
+{
+  "name": "real-ios-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "project-repl": "^1.6.1"
+  },
+  "dependencies": {
+    "cgbi-to-png": "^1.0.7"
+  }
+}
