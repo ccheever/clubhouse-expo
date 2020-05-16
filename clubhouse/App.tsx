@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Image, StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { StatusBar } from "react-native";
 
 import {
   useFonts,
@@ -7,12 +8,11 @@ import {
   Nunito_700Bold,
   Nunito_400Regular,
 } from "@expo-google-fonts/nunito";
-import { useDimensions } from "@react-native-community/hooks";
+import { icons, images } from "./styleguide";
 import { AppLoading } from "expo";
-import { Loading } from "./screens/Loading";
-import { Rooms } from "./screens/Rooms";
-import { Activity } from "./screens/Activity";
-import { Profile } from "./screens/Profile";
+import { Asset } from "expo-asset";
+
+import Navigation from "./navigation";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -20,92 +20,42 @@ export default function App() {
     Nunito_700Bold,
     Nunito_400Regular,
   });
-  if (!fontsLoaded) {
+  let imagesLoaded = useImages({...icons, ...images});
+  if (!fontsLoaded || !imagesLoaded) {
     return <AppLoading />;
   }
 
-  return <SigninScreen />;
-}
-
-function SigninScreen() {
-  let { height, width } = useDimensions().window;
-  const [loading, setLoading] = useState(false);
-
-  function fakeLoading() {
-    setLoading(true);
-    setTimeout(() => setLoading(false), 1000);
-  }
-
-  // return <Rooms />;
-  // return <Activity />;
   return (
-    <Profile
-      user={{
-        firstName: "Scarlett",
-        lastName: "Zemlak",
-        username: "Dereck_Klocko2",
-        avatar:
-          "https://s3.amazonaws.com/uifaces/faces/twitter/mhudobivnik/128.jpg",
-        followers: 109,
-        following: 169,
-        bio:
-          "Nostrum dolorum aut fugit recusandae sint. Dignissimos earum dolores omnis et ex voluptas. Omnis et odit ea harum repudiandae quasi reiciendis. Et saepe ipsa repellendus dolores consequatur quas.",
-      }}
-    />
-  );
-
-  return (
-    <Loading isLoading={loading}>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "#F1EFE5",
-          alignItems: "center",
-          justifyContent: "flex-end",
-          paddingBottom: 60,
-        }}
-      >
-        <Image
-          source={require("./assets/onboarding_start.png")}
-          style={{
-            height: 300,
-            width: 300,
-            marginBottom: 240,
-          }}
-        />
-
-        <TouchableOpacity onPress={() => fakeLoading()} style={{ zIndex: 100 }}>
-          <View
-            style={{
-              height: 60,
-              width: 240,
-              borderRadius: 30,
-              backgroundColor: "#5C75A8",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Text
-              style={{
-                fontFamily: "Nunito_600SemiBold",
-                fontSize: 20,
-                color: "white",
-              }}
-            >
-              Sign in
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    </Loading>
+    <>
+      <SafeAreaProvider>
+        <Navigation />
+      </SafeAreaProvider>
+      <StatusBar barStyle="dark-content" animated={true} />
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+function useImages(images: { [key: string]: any }) {
+  let [imagesLoaded, setImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    async function loadImagesAsync() {
+      try {
+        const imageAssetIds = Object.values(images);
+        const imageLoadingPromises = imageAssetIds.map((assetId) =>
+          Asset.fromModule(assetId).downloadAsync()
+        );
+
+        await Promise.all(imageLoadingPromises);
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setImagesLoaded(true);
+      }
+    }
+
+    loadImagesAsync();
+  });
+
+  return imagesLoaded;
+}

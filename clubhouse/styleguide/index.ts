@@ -6,3 +6,13 @@ export const colors = {
   black: "#343434",
   gray: "#73706B",
 };
+
+export const icons = {
+  backButtonBlack: require("../assets/images/button_back_black.png"),
+  backButtonWhite: require("../assets/images/button_back_white.png"),
+  gear: require("../assets/images/button_settings_black.png"),
+};
+
+export const images = {
+  onboardingStart: require("../assets/images/onboarding_start.png"),
+};
