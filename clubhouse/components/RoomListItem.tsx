@@ -24,11 +24,21 @@ export function RoomListItem(props: Props) {
       </View>
       <View style={styles.body}>
         <Text style={styles.join}>Join in</Text>
-        {usersToDisplay.map((user) => (
-          <Text style={styles.user} key={user.avatar}>
-            {user.firstName} {user.lastName} {Math.random() > 0.5 ? "💬" : ""}
-          </Text>
-        ))}
+        {usersToDisplay
+          .map((user) => ({
+            ...user,
+            isSpeaking: Math.random() > 0.5,
+          }))
+          .sort((a, b) => {
+            if (a.isSpeaking) return -1;
+            if (b.isSpeaking) return 1;
+            return -1;
+          })
+          .map((user) => (
+            <Text style={styles.user} key={user.avatar}>
+              {user.firstName} {user.lastName} {user.isSpeaking && "💬"}
+            </Text>
+          ))}
         <Text style={styles.user}>+{users.length - 5} others</Text>
       </View>
     </View>

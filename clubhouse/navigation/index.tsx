@@ -6,7 +6,6 @@ import { enableScreens } from "react-native-screens";
 import { colors } from "../styleguide";
 import { Home } from "../screens/Home";
 import { Loading } from "../screens/Loading";
-import { Rooms } from "../screens/Rooms";
 import { Activity } from "../screens/Activity";
 import { Profile } from "../screens/Profile";
 import { UserSettings } from "../screens/UserSettings";

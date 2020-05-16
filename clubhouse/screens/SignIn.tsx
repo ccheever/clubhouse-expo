@@ -3,7 +3,7 @@ import { Image, StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import { Loading } from "./Loading";
 import { Profile } from "./Profile";
 import { useDimensions } from "@react-native-community/hooks";
-import { images } from '../styleguide';
+import { images } from "../styleguide";
 
 export default function SigninScreen() {
   let { height, width } = useDimensions().window;
@@ -14,7 +14,6 @@ export default function SigninScreen() {
     setTimeout(() => setLoading(false), 1000);
   }
 
-  // return <Rooms />;
   // return <Activity />;
   return (
     <Profile
