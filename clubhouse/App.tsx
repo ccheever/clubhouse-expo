@@ -5,17 +5,20 @@ import {
   useFonts,
   Nunito_600SemiBold,
   Nunito_700Bold,
+  Nunito_400Regular,
 } from "@expo-google-fonts/nunito";
 import { useDimensions } from "@react-native-community/hooks";
 import { AppLoading } from "expo";
 import { Loading } from "./screens/Loading";
 import { Rooms } from "./screens/Rooms";
 import { Activity } from "./screens/Activity";
+import { Profile } from "./screens/Profile";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     Nunito_600SemiBold,
     Nunito_700Bold,
+    Nunito_400Regular,
   });
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -34,7 +37,22 @@ function SigninScreen() {
   }
 
   // return <Rooms />;
-  return <Activity />;
+  // return <Activity />;
+  return (
+    <Profile
+      user={{
+        firstName: "Scarlett",
+        lastName: "Zemlak",
+        username: "Dereck_Klocko2",
+        avatar:
+          "https://s3.amazonaws.com/uifaces/faces/twitter/mhudobivnik/128.jpg",
+        followers: 109,
+        following: 169,
+        bio:
+          "Nostrum dolorum aut fugit recusandae sint. Dignissimos earum dolores omnis et ex voluptas. Omnis et odit ea harum repudiandae quasi reiciendis. Et saepe ipsa repellendus dolores consequatur quas.",
+      }}
+    />
+  );
 
   return (
     <Loading isLoading={loading}>
