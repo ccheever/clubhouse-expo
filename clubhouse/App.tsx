@@ -33,16 +33,16 @@ function SigninScreen() {
         style={{
           height: 300,
           width: 300,
-          marginBottom: 150,
+          marginBottom: 240,
         }}
       />
 
       <TouchableOpacity onPress={() => {}}>
         <View
           style={{
-            height: 48,
+            height: 60,
             width: 240,
-            borderRadius: 24,
+            borderRadius: 30,
             backgroundColor: "#5C75A8",
             alignItems: "center",
             justifyContent: "center",
