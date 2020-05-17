@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
   },
   user: {
     color: colors.black,
-    fontFamily: "Nunito_700Bold",
-    fontSize: 19,
+    fontFamily: "Nunito_600SemiBold",
+    fontSize: 18,
     lineHeight: 28,
   },
 });

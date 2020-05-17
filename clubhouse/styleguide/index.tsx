@@ -8,6 +8,8 @@ export const colors = {
   green: "#56AC68",
   black: "#343434",
   gray: "#73706B",
+  lightgreen: 'rgba(30,165,90,1)',
+  lightgray: 'rgba(183,184,178,1)'
 };
 
 export const icons = {

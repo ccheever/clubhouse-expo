@@ -7,8 +7,8 @@ import {
   Image,
   ScrollView,
 } from "react-native";
+import { BorderlessButton } from "react-native-gesture-handler";
 import { NavigationBar } from "../components/NavigationBar";
-import { useNavigation } from "@react-navigation/core";
 import { colors, icons } from "../styleguide";
 
 type User = {
@@ -23,6 +23,7 @@ type User = {
 
 type Props = {
   user: User;
+  navigation: any;
 };
 
 const DEFAULT_USER = {
@@ -52,11 +53,18 @@ export function Profile(props: Props) {
     <View style={{ flex: 1 }}>
       <NavigationBar
         title={`@${username}`}
-        renderRight={() => <SettingsButton user={user} />}
+        renderRight={() => <SettingsButton />}
       />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.userInfoContainer}>
-          <Image source={{ uri: avatar }} style={styles.avatar} />
+          <View style={styles.avatarButtonContainer}>
+            <BorderlessButton
+              activeOpacity={0.7}
+              onPress={() => props.navigation.navigate("Avatar", { user })}
+            >
+              <Image source={{ uri: avatar }} style={styles.avatar} />
+            </BorderlessButton>
+          </View>
           <View style={styles.statCotainer}>
             <Text style={styles.statText}>{followers}</Text>
             <Text style={styles.statText}>followers</Text>
@@ -75,12 +83,12 @@ export function Profile(props: Props) {
   );
 }
 
-function SettingsButton({ user }: { user: User }) {
-  const navigation = useNavigation();
-
+function SettingsButton() {
   return (
     <TouchableWithoutFeedback
-      onPress={() => navigation.navigate("UserSettings", { user })}
+      onPress={() => {
+        /* todo show action sheet */
+      }}
       hitSlop={{ top: 20, bottom: 20, right: 20, left: 20 }}
     >
       <Image source={icons.gear} style={styles.settingsButtonIcon} />
@@ -97,9 +105,15 @@ const styles = StyleSheet.create({
   userInfoContainer: {
     flexDirection: "row",
   },
+  avatarButtonContainer: {
+    height: 70,
+    width: 70,
+    borderRadius: 28,
+    backgroundColor: "black",
+  },
   avatar: {
-    height: 80,
-    width: 80,
+    height: 70,
+    width: 70,
     borderRadius: 28,
   },
   statCotainer: {
@@ -110,22 +124,23 @@ const styles = StyleSheet.create({
   statText: {
     color: colors.black,
     fontFamily: "Nunito_400Regular",
-    fontSize: 20,
+    fontSize: 19,
   },
   username: {
     color: colors.black,
     fontFamily: "Nunito_700Bold",
-    fontSize: 20,
+    fontSize: 19,
     marginTop: 20,
   },
   bio: {
     color: colors.black,
     fontFamily: "Nunito_400Regular",
-    fontSize: 18,
-    marginTop: 8,
+    fontSize: 17,
+    marginTop: 4,
+    lineHeight: 24,
   },
   settingsButtonIcon: {
-    width: 28,
-    height: 28,
+    width: 25,
+    height: 25,
   },
 });

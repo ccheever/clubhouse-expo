@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  Platform,
   TouchableWithoutFeedback,
   Image,
   Text,
@@ -10,7 +11,7 @@ import { useSafeArea } from "react-native-safe-area-context";
 import { colors, icons } from "../styleguide";
 import { useNavigation } from "@react-navigation/core";
 
-const NAVIGATION_BAR_HEIGHT = 50;
+const NAVIGATION_BAR_HEIGHT = 60;
 
 type Props = {
   isInsideModal?: boolean;
@@ -18,6 +19,7 @@ type Props = {
   renderLeft?: () => any;
   renderRight?: () => any;
   title?: string;
+  titleCase?: "normal";
 };
 
 function BackButton(props: { label?: string }) {
@@ -45,7 +47,12 @@ export function NavigationBar(props: Props) {
     <View
       style={[
         styles.container,
-        !props.isInsideModal && { marginTop: insets.top },
+        {
+          marginTop: Platform.select({
+            ios: props.isInsideModal ? 15 : insets.top,
+            default: insets.top,
+          }),
+        },
       ]}
     >
       <View style={styles.left}>
@@ -57,7 +64,11 @@ export function NavigationBar(props: Props) {
       </View>
 
       <View style={styles.center}>
-        <Text style={styles.title}>{props.title?.toUpperCase()}</Text>
+        <Text style={styles.title}>
+          {props.titleCase === "normal"
+            ? props.title
+            : props.title?.toUpperCase()}
+        </Text>
       </View>
 
       <View style={styles.right}>{props.renderRight?.()}</View>
@@ -78,7 +89,7 @@ const styles = StyleSheet.create({
     left: 0,
     top: 0,
     bottom: 0,
-    paddingLeft: 15,
+    paddingLeft: 20,
     justifyContent: "center",
   },
   center: {
@@ -87,20 +98,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontFamily: "Nunito_700Bold",
+    fontFamily: "Nunito_600SemiBold",
     color: colors.black,
-    fontSize: 18,
+    fontSize: 17,
   },
   right: {
     position: "absolute",
     right: 0,
     top: 0,
     bottom: 0,
-    paddingRight: 15,
+    paddingRight: 20,
     justifyContent: "center",
   },
   backButtonIcon: {
-    width: 28,
-    height: 28,
+    width: 25,
+    height: 25,
   },
 });

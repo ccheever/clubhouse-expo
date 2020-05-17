@@ -11,8 +11,9 @@ import users from "../assets/users.json";
 import { RoomListItem } from "../components/RoomListItem";
 import { colors, AddUserIcon, images } from "../styleguide";
 import { NavigationBar } from "../components/NavigationBar";
+import { Button } from "../components/Button";
 
-export function Home(props) {
+export function Home(props: any) {
   const roomOneUsers = [...users].slice(0, 18);
   const roomTwoUsers = [...users].slice(19, 35);
   const roomThreeUsers = [...users].slice(35, 100);
@@ -57,16 +58,19 @@ export function Home(props) {
         <RoomListItem users={roomThreeUsers} />
       </ScrollView>
       <View style={styles.bottomContainer}>
-        <View>
-          <TouchableOpacity onPress={() => {}} style={styles.button}>
-            <Text style={styles.buttonText}>☝🏼 Start a new room</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}}>
-            <Text style={styles.addTopicText}>
-              ✨ Add topic or pick speakers
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <Button
+          color="lightgreen"
+          onPress={() => {}}
+          label="☝🏼 Start a new room"
+          style={{
+            paddingHorizontal: 30,
+            paddingVertical: 10,
+            borderRadius: 24,
+          }}
+        />
+        <TouchableOpacity onPress={() => {}}>
+          <Text style={styles.addTopicText}>✨ Add topic or pick speakers</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -75,7 +79,7 @@ export function Home(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingBottom: 60,
+    paddingBottom: 50,
   },
   contentContainer: {
     backgroundColor: colors.beige,
@@ -83,24 +87,11 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     bottom: 24,
-    flexDirection: "row",
+    alignItems :'center',
     justifyContent: "center",
-  },
-  button: {
-    backgroundColor: colors.green,
-    paddingHorizontal: 30,
-    paddingVertical: 10,
-    borderRadius: 40,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  buttonText: {
-    color: colors.white,
-    fontFamily: "Nunito_700Bold",
-    fontSize: 22,
   },
   addTopicText: {
-    color: colors.gray,
+    color: colors.lightgray,
     fontFamily: "Nunito_600SemiBold",
     fontSize: 16,
     marginTop: 8,
@@ -110,8 +101,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   navAvatar: {
-    width: 33,
-    height: 33,
+    width: 30,
+    height: 30,
     borderRadius: 13,
     resizeMode: "contain",
     marginLeft: 30,

@@ -5,11 +5,10 @@ import { enableScreens } from "react-native-screens";
 
 import { colors } from "../styleguide";
 import { Home } from "../screens/Home";
-import { Loading } from "../screens/Loading";
 import { Activity } from "../screens/Activity";
 import { Profile } from "../screens/Profile";
 import { SignIn } from "../screens/SignIn";
-import { UserSettings } from "../screens/UserSettings";
+import { Avatar } from "../screens/Avatar";
 
 enableScreens();
 
@@ -33,8 +32,8 @@ export function HomeStack() {
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Activity" component={Activity} />
       <Stack.Screen
-        name="UserSettings"
-        component={UserSettings}
+        name="Avatar"
+        component={Avatar}
         options={{ stackPresentation: "modal" }}
       />
     </Stack.Navigator>
