@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  TouchableWithoutFeedback,
   TouchableOpacity,
   StyleSheet,
   Platform,
@@ -9,6 +8,9 @@ import {
   Image,
   ScrollView,
 } from "react-native";
+import { BorderlessButton } from "react-native-gesture-handler";
+import { useActionSheet } from "@expo/react-native-action-sheet";
+
 import { NavigationBar } from "../components/NavigationBar";
 import { colors, icons } from "../styleguide";
 
@@ -85,15 +87,30 @@ export function Profile(props: Props) {
 }
 
 function SettingsButton() {
+  const { showActionSheetWithOptions } = useActionSheet();
+
   return (
-    <TouchableWithoutFeedback
+    <BorderlessButton
       onPress={() => {
-        /* todo show action sheet */
+        showActionSheetWithOptions(
+          {
+            options: ["Disable push notifications", "Log out", "Cancel"],
+            destructiveButtonIndex: 1,
+            cancelButtonIndex: 2,
+          },
+          (selectedIndex) => {
+            if (selectedIndex === 0) {
+              alert("This is where we would disable push notifications");
+            } else if (selectedIndex === 1) {
+              alert("This is where we would log out");
+            }
+          }
+        );
       }}
       hitSlop={{ top: 20, bottom: 20, right: 20, left: 20 }}
     >
       <Image source={icons.gear} style={styles.settingsButtonIcon} />
-    </TouchableWithoutFeedback>
+    </BorderlessButton>
   );
 }
 

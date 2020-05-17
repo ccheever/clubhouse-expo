@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { View } from 'react-native';
+import { View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { StatusBar } from "./components/StatusBar";
-
 import {
   useFonts,
   Nunito_600SemiBold,
   Nunito_700Bold,
   Nunito_400Regular,
 } from "@expo-google-fonts/nunito";
-import { colors, icons, images } from "./styleguide";
+import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
 
+import { colors, icons, images } from "./styleguide";
+import { StatusBar } from "./components/StatusBar";
 import Navigation from "./navigation";
 
 export default function App() {
@@ -27,10 +27,12 @@ export default function App() {
   }
 
   return (
-    <View style={{flex: 1, backgroundColor: colors.beige}}>
-      <SafeAreaProvider>
-        <Navigation />
-      </SafeAreaProvider>
+    <View style={{ flex: 1, backgroundColor: colors.beige }}>
+      <ActionSheetProvider>
+        <SafeAreaProvider>
+          <Navigation />
+        </SafeAreaProvider>
+      </ActionSheetProvider>
       <StatusBar style="default" />
     </View>
   );

@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "@expo-google-fonts/nunito": "^0.1.0",
+    "@expo/react-native-action-sheet": "^3.7.0",
     "@react-native-community/hooks": "^2.5.1",
     "@react-native-community/masked-view": "0.1.6",
     "@react-navigation/native": "^5.3.2",
     "@react-navigation/stack": "^5.2.18",
     "expo": "~37.0.11",
+    "expo-image-picker": "~8.1.0",
     "expo-linear-gradient": "~8.1.0",
     "faker": "4.1.0",
     "react": "~16.9.0",
