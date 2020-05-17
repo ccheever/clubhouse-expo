@@ -13,5 +13,5 @@ export function StatusBar(props: Props) {
   const barStyle =
     props.style === "inverted" ? "light-content" : "dark-content";
 
-  return <BaseStatusBar barStyle={barStyle} />;
+  return <BaseStatusBar barStyle={barStyle} animated={true} />;
 }
