@@ -12,7 +12,7 @@ export function SignIn({ navigation }: { navigation: any }) {
     setTimeout(() => {
       setLoading(false);
       onComplete();
-    }, 1000);
+    }, 600);
   }
 
   return (
