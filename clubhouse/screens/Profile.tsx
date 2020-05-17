@@ -1,13 +1,14 @@
 import React from "react";
 import {
   TouchableWithoutFeedback,
+  TouchableOpacity,
   StyleSheet,
+  Platform,
   Text,
   View,
   Image,
   ScrollView,
 } from "react-native";
-import { BorderlessButton } from "react-native-gesture-handler";
 import { NavigationBar } from "../components/NavigationBar";
 import { colors, icons } from "../styleguide";
 
@@ -58,12 +59,12 @@ export function Profile(props: Props) {
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.userInfoContainer}>
           <View style={styles.avatarButtonContainer}>
-            <BorderlessButton
+            <TouchableOpacity
               activeOpacity={0.7}
               onPress={() => props.navigation.navigate("Avatar", { user })}
             >
               <Image source={{ uri: avatar }} style={styles.avatar} />
-            </BorderlessButton>
+            </TouchableOpacity>
           </View>
           <View style={styles.statCotainer}>
             <Text style={styles.statText}>{followers}</Text>
@@ -109,7 +110,10 @@ const styles = StyleSheet.create({
     height: 70,
     width: 70,
     borderRadius: 28,
-    backgroundColor: "black",
+    backgroundColor: Platform.select({
+      ios: "#000",
+      default: "#ccc",
+    }),
   },
   avatar: {
     height: 70,

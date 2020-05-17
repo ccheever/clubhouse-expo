@@ -1,10 +1,11 @@
 import * as React from "react";
-import { StatusBar, StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text } from "react-native";
 import { useSafeArea } from "react-native-safe-area-context";
 
 import { colors } from "../styleguide";
 import { Button } from "../components/Button";
 import { NavigationBar } from "../components/NavigationBar";
+import { StatusBar } from "../components/StatusBar";
 
 type Props = {
   navigation: any;
@@ -31,7 +32,7 @@ export function Avatar({ navigation, route }: Props) {
           />
         </View>
       </View>
-      <View style={{ marginBottom: insets.bottom || 10 }}>
+      <View style={{ marginBottom: insets.bottom || 30 }}>
         <Button
           color="blue"
           onPress={() => navigation.goBack()}
@@ -39,7 +40,7 @@ export function Avatar({ navigation, route }: Props) {
           label="Done"
         />
       </View>
-      <StatusBar barStyle="light-content" />
+      <StatusBar style="inverted" />
     </View>
   );
 }

@@ -79,7 +79,7 @@ export function Home(props: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingBottom: 50,
+    paddingBottom: 40,
   },
   contentContainer: {
     backgroundColor: colors.beige,

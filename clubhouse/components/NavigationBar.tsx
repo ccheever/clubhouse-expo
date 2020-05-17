@@ -1,12 +1,6 @@
 import * as React from "react";
-import {
-  Platform,
-  TouchableWithoutFeedback,
-  Image,
-  Text,
-  StyleSheet,
-  View,
-} from "react-native";
+import { Platform, Image, Text, StyleSheet, View } from "react-native";
+import { BorderlessButton } from "react-native-gesture-handler";
 import { useSafeArea } from "react-native-safe-area-context";
 import { colors, icons } from "../styleguide";
 import { useNavigation } from "@react-navigation/core";
@@ -25,18 +19,13 @@ type Props = {
 function BackButton(props: { label?: string }) {
   const navigation = useNavigation();
 
-  // maybe?
-  // if (!navigation.canGoBack && !props.onPressBackButton) {
-  //   return;
-  // }
-
   return (
-    <TouchableWithoutFeedback
+    <BorderlessButton
       onPress={() => navigation.canGoBack() && navigation.goBack()}
       hitSlop={{ top: 20, bottom: 20, right: 20, left: 20 }}
     >
       <Image source={icons.backButtonBlack} style={styles.backButtonIcon} />
-    </TouchableWithoutFeedback>
+    </BorderlessButton>
   );
 }
 
