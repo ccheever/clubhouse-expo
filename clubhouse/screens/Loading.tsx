@@ -49,7 +49,7 @@ export function Loading(props: Props) {
         pointerEvents={isLoading ? "auto" : "none"}
       >
         <LinearGradient
-          colors={["rgba(0,0,0,0.75)", "rgba(0,0,0,0.5)", "rgba(0,0,0,0.75)"]}
+          colors={["rgba(0,0,0,0.99)", "rgba(0,0,0,0.75)", "rgba(0,0,0,0.99)"]}
           style={styles.container}
         />
         <View style={styles.container}>
