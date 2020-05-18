@@ -6,6 +6,8 @@ type Props = {
   firstName: string;
   lastName: string;
   avatar: string;
+  isYou: boolean;
+  isSpeaking: boolean;
 };
 
 export function PresenceItem(props: Props) {
@@ -22,6 +24,7 @@ export function PresenceItem(props: Props) {
         <Text style={styles.user} key={user.avatar}>
           {user.firstName} {user.lastName} {user.isSpeaking && '💬'}
         </Text>
+        {props.isYou ? <Text style={styles.join}>This is you</Text> : null}
       </View>
     </View>
   );
@@ -37,7 +40,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 1,
     flexDirection: 'row',
-    minHeight: 100,
+    minHeight: 60,
     marginBottom: 20,
   },
   image: {
