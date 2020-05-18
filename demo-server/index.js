@@ -20,23 +20,6 @@ app.get('/', async (req, res) => {
   );
 });
 
-let users = {};
-let currentUser = {};
-
-app.post('/users', (req, res) => {
-  let name = req.body.name;
-  let matchedUsers = Object.keys(users).filter((id) => users[id].name === name);
-
-  if (matchedUsers.length === 0) {
-    let id = generate_random_id();
-    users[id] = currentUser = { id, name };
-  } else {
-    currentUser = users[matchedUsers[0]];
-  }
-
-  res.json({ currentUser, users });
-});
-
 app.post('/pusher/auth', (req, res) => {
   // console.log('Got an auth request with', {
   //   'req.body': req.body,
