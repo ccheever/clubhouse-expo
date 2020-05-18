@@ -9,15 +9,20 @@ let cluster = process.env.PUSHER_APP_CLUSTER;
 let useTLS = true;
 
 if (!(appId && key && secret && cluster)) {
-  throw new Error("Set the env vars for PUSHER_APP_ID, PUSHER_APP_KEY, PUSHER_APP_SECRET, PUSHER_APP_CLUSTER");
+  throw new Error(
+    'Set the env vars for PUSHER_APP_ID, PUSHER_APP_KEY, PUSHER_APP_SECRET, PUSHER_APP_CLUSTER'
+  );
 }
 
-let pusher = new Pusher({
+let pusherConfig = {
   appId,
   key,
   secret,
   cluster,
   useTLS,
-});
+};
+
+
+let pusher = new Pusher(pusherConfig);
 
 module.exports = pusher;
