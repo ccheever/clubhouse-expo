@@ -1,10 +1,14 @@
 let Pusher = require('pusher');
 
-let appId = process.env.PUSHER_APP_ID || '1002754';
-let key = process.env.PUSHER_APP_KEY || 'c8ecb3047849cea1c0a7';
-let secret = process.env.PUSHER_APP_SECRET || '6c63a325354b86d9b058';
-let cluster = process.env.PUSHER_APP_CLUSTER || 'us3';
+let appId = process.env.PUSHER_APP_ID;
+let key = process.env.PUSHER_APP_KEY;
+let secret = process.env.PUSHER_APP_SECRET;
+let cluster = process.env.PUSHER_APP_CLUSTER;
 let useTLS = true;
+
+if (!(appId && key && secret && cluster)) {
+  throw new Error("Set the env vars for PUSHER_APP_ID, PUSHER_APP_KEY, PUSHER_APP_SECRET, PUSHER_APP_CLUSTER");
+}
 
 let pusher = new Pusher({
   appId,
