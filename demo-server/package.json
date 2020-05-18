@@ -1,0 +1,21 @@
+{
+  "name": "clubhouse-demo-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "node ."
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "localip": "^1.0.0",
+    "pusher": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "project-repl": "^1.6.1"
+  }
+}
