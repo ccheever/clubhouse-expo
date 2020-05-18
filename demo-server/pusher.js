@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 let Pusher = require('pusher');
 
 let appId = process.env.PUSHER_APP_ID;
